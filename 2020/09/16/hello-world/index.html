@@ -3,7 +3,7 @@
 
 
 <head>
-    <meta charset="utf-8">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="Hello World, 赵嘉熠的博客">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,11 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.1.1"></head>
+<meta name="generator" content="Hexo 5.1.1"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
-    <header class="navbar-fixed">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
@@ -458,10 +458,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="赵嘉熠的博客">赵嘉熠的博客</h3>
-<h4 id="建站于2020-9">建站于2020.9</h4>
-<h4 id="。・∀・-ノ">(。・∀・)ノ</h4>
-<p><img src="http://zhaojiayibjea.gitee.io/zhaojiayipicture/BJEA_real.jpg" alt=""></p>
+                <h3 id="赵嘉熠的博客"><a href="#赵嘉熠的博客" class="headerlink" title="赵嘉熠的博客"></a>赵嘉熠的博客</h3><h4 id="建站于2020-9"><a href="#建站于2020-9" class="headerlink" title="建站于2020.9"></a>建站于2020.9</h4><h4 id="。・∀・-ノ"><a href="#。・∀・-ノ" class="headerlink" title="(。・∀・)ノ"></a>(。・∀・)ノ</h4><p><img src="http://zhaojiayibjea.gitee.io/zhaojiayipicture/BJEA_real.jpg" alt=""></p>
 
             </div>
             <hr/>
@@ -656,10 +653,8 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            背包问题
-​		给定一组物品，每种物品都有自己的重量和价值，现有一个背包，能承受的重量有限，在受限制的重量下，去取若干物品使总价值最大。
-可拆分背包问题
-	有$N$件物品和一个容积为$V$的背包。每件物品具有体积$c_i$和价值$w_i$。
+                            背包问题给定一组物品，每种物品都有自己的重量和价值，现有一个背包，能承受的重量有限，在受限制的重量下，去取若干物品使总价值最大。
+可拆分背包问题有$N$件物品和一个容积为$V$的背包。每件物品具有体积$c_i$和价值$w_i$。每件物品可以
                         
                     </div>
                     <div class="publish-info">
@@ -708,10 +703,7 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            赵嘉熠的博客
-建站于2020.9
-(。・∀・)ノ
-
+                            赵嘉熠的博客建站于2020.9(。・∀・)ノ
 
                         
                     </div>
@@ -1053,6 +1045,22 @@ $(function () {
     
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </body>
 
