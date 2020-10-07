@@ -194,7 +194,7 @@
     <link itemprop="mainEntityOfPage" href="http://zhaojiayibjea.github.io/2020/09/16/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/doggy.jpg">
       <meta itemprop="name" content="Zhao Jiayi">
       <meta itemprop="description" content="">
     </span>
@@ -216,15 +216,22 @@
 
               <time title="创建时间：2020-09-16 16:42:09" itemprop="dateCreated datePublished" datetime="2020-09-16T16:42:09+08:00">2020-09-16</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-26 20:56:04" itemprop="dateModified" datetime="2020-09-26T20:56:04+08:00">2020-09-26</time>
-              </span>
 
           
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/09/16/hello-world/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/09/16/hello-world/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
@@ -254,10 +261,7 @@
     <a href="/2020/07/13/%E7%96%AB%E6%83%85%E9%A1%B9%E7%9B%AE%E5%8C%96%E5%AD%A6%E4%B9%A0%E6%88%90%E6%9E%9C%E6%B1%87%E6%80%BB/" rel="prev" title="疫情项目化学习成果汇总">
       <i class="fa fa-chevron-left"></i> 疫情项目化学习成果汇总
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/09/30/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/" rel="next" title="背包问题">
-      背包问题 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -270,6 +274,7 @@
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -316,12 +321,14 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B5%B5%E5%98%89%E7%86%A0%E7%9A%84%E5%8D%9A%E5%AE%A2"><span class="nav-number">1.</span> <span class="nav-text">赵嘉熠的博客</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BB%BA%E7%AB%99%E4%BA%8E2020-9"><span class="nav-number">1.1.</span> <span class="nav-text">建站于2020.9</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E3%80%82%E3%83%BB%E2%88%80%E3%83%BB-%E3%83%8E"><span class="nav-number">1.2.</span> <span class="nav-text">(。・∀・)ノ</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B5%B5%E5%98%89%E7%86%A0%E7%9A%84%E5%8D%9A%E5%AE%A2"><span class="nav-text">赵嘉熠的博客</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BB%BA%E7%AB%99%E4%BA%8E2020-9"><span class="nav-text">建站于2020.9</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E3%80%82%E3%83%BB%E2%88%80%E3%83%BB-%E3%83%8E"><span class="nav-text">(。・∀・)ノ</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zhao Jiayi"
+      src="/images/doggy.jpg">
   <p class="site-author-name" itemprop="name">Zhao Jiayi</p>
   <div class="site-description" itemprop="description"></div>
 </div>
@@ -415,7 +422,7 @@
 
 
   
-<script src="/js/local-search.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script src="/js/local-search.js"></script>
 
 
 
@@ -434,6 +441,35 @@
   
 
   
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'egbHdezmbhNkGI8udEdOmtxs-gzGzoHsz',
+      appKey     : 'ImiKQHShq5rs7Sy6krOc6mDo',
+      placeholder: "快来评论吧~",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </body>
 </html>
