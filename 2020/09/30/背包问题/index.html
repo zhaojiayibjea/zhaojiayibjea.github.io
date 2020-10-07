@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"zhaojiayibjea.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"zhaojiayibjea.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="背包问题给定一组物品，每种物品都有自己的重量和价值，现有一个背包，能承受的重量有限，在受限制的重量下，去取若干物品使总价值最大。 可拆分背包问题有$N$件物品和一个容积为$V$的背包。每件物品具有体积$c_i$和价值$w_i$。每件物品可以分割成任意大小后放入背包，且单位价值体积不变。该背包中最多可以放入的物品总价值为多少？ 我们总是优先挑选单位体积内价值较高的物品放入背包内，所以对于每种物品，先">
@@ -78,7 +78,7 @@
   </style>
 </noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
@@ -281,19 +281,9 @@
 <script type="math/tex; mode=display">
 j<c_i, dp[i][j]=dp[i-1][j]</script><script type="math/tex; mode=display">
 c_i\leqslant j, dp[i][j]=max(dp[i-1][j],dp[i][j-c_i]+w_i)</script><p>核心代码：</p>
-<pre class=" language-lang-cpp"><code class="language-lang-cpp">for (int i = 1; i <= N; ++i) &#123;
-    for (int j = 0; j <= V; ++j) &#123;
-        if(j >= c[i]) &#123;
-            dp[i][j] = max(dp[i - 1][j - c[i]] + w[i], dp[i - 1][j]);
-        &#125; else &#123;
-            dp[i][j] = dp[i - 1][j];
-        &#125;
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= N; ++i) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= V; ++j) &#123;</span><br><span class="line">        <span class="keyword">if</span>(j &gt;= c[i]) &#123;</span><br><span class="line">            dp[i][j] = max(dp[i - <span class="number">1</span>][j - c[i]] + w[i], dp[i - <span class="number">1</span>][j]);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            dp[i][j] = dp[i - <span class="number">1</span>][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>优化：转移时第一维只与<code>i-1</code>和<code>i</code>有关，因此我们可以将dp数组压缩</p>
-<pre class=" language-lang-cpp"><code class="language-lang-cpp">int dp[2][V];
-</code></pre>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> dp[<span class="number">2</span>][V];</span><br></pre></td></tr></table></figure>
 <h3 id="多重背包问题"><a href="#多重背包问题" class="headerlink" title="多重背包问题"></a>多重背包问题</h3><p>​        <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1776">洛谷P1776 宝物筛选</a></p>
 <p>有$N$种物品，第$i$种物品的体积是$c_i$，价值是$w_i$，每种物品的<strong>数量都是有限的</strong>，为$n_i$。现有容量为$V$的背包，请你放入若干物品，在总体积不超过$V$的条件下，使总价值尽可能大。</p>
 <p>解法一：</p>
@@ -303,33 +293,16 @@ c_i\leqslant j, dp[i][j]=max(dp[i-1][j],dp[i][j-c_i]+w_i)</script><p>核心代�
 <script type="math/tex; mode=display">
 dp[i][j]=max(dp[i][j],dp[i-1][j-k*c_i]+k*w_i),0\leqslant k\leqslant n_i</script><p>复杂度$O(V\sum{n_i})$</p>
 <p> 核心代码：</p>
-<pre class=" language-lang-cpp"><code class="language-lang-cpp">for (int i = 1; i <= N; i++) &#123;
-    for (int j = 0; j <= V; j++) &#123;
-        for (int k = 0; k <= n[i]; k++) &#123;
-            if (j >= c[i] * k) &#123;
-                dp[i][j] = max(dp[i - 1][j - c[i] * k] + w[i] * k, dp[i][j]);
-            &#125;
-        &#125;
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= N; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= V; j++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt;= n[i]; k++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (j &gt;= c[i] * k) &#123;</span><br><span class="line">                dp[i][j] = max(dp[i - <span class="number">1</span>][j - c[i] * k] + w[i] * k, dp[i][j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这份代码和01背包相比不再有<code>else</code>部分了，因为<code>k=0</code>的时候<code>dp[i][j]=max(dp[i-1][j],dp[i][j])</code>，相当于01背包的<code>else</code>部分。</p>
 <p>优化：</p>
 <p>和01背包一样，由于转移方程只用到<code>i</code>和<code>i-1</code>，可以转成滚动数组，但由于<code>dp[i][j]</code>依赖初始值，所以在每次<code>j</code>循环开始之前一定要</p>
-<pre class=" language-lang-cpp"><code class="language-lang-cpp">memset(dp[flag],0,sizeof(dp[flag]));
-</code></pre>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">memset</span>(dp[flag],<span class="number">0</span>,<span class="keyword">sizeof</span>(dp[flag]));</span><br></pre></td></tr></table></figure>
 <h3 id="完全背包问题"><a href="#完全背包问题" class="headerlink" title="完全背包问题"></a>完全背包问题</h3><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1616">洛谷P1616 疯狂的采药</a></p>
 <p>当前有$N$种物品，第$i$种物品的体积是$c_i$，价值是$w_i$。每种物品的<strong>数量是无限的</strong>，可以任意选择若干件。现有容量为$V$的背包，请你放入若干物品，使总体积不超过$V$，并且总价值尽可能大。</p>
 <p>解法：虽然物品个数是无限的，但是实际上，由于背包容量有上限，每个物品最多选取的个数也是有限制的，这样可以转换成多重背包问题$n_i=\frac{V}{c_i}$，进而可以转换成01背包问题。</p>
 <p>核心代码：</p>
-<pre class=" language-lang-cpp"><code class="language-lang-cpp">for (int i = 1; i <= N; i++) &#123;
-    for (int j = 0; j <= V; j++) &#123;
-        for (int k = 0; k * c[i] <= j; k++) &#123;
-            dp[i][j] = max(dp[i - 1][j - c[i] * k] + w[i] * k, dp[i][j]);
-        &#125;
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= N; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= V; j++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k * c[i] &lt;= j; k++) &#123;</span><br><span class="line">            dp[i][j] = max(dp[i - <span class="number">1</span>][j - c[i] * k] + w[i] * k, dp[i][j]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>时间效率优化：</strong></p>
 <p>我们可以注意到</p>
 <script type="math/tex; mode=display">
@@ -337,58 +310,19 @@ dp[i][j]=max(dp[i-1][j],dp[i-1][j-c_i]+w_i,dp[i-1][j-c_i*2]+w_i*2...)</script><p
 <script type="math/tex; mode=display">
 dp[i][j-c_i]=max(dp[i-1][j-c_i],dp[i-1][j-c_i*2]+w_i,dp[i-1][j-c_i*3]+w_i*2...)</script><p>也就是说，我们完全可以用<code>dp[i][j-c[i]]</code>的信息去更新<code>dp[i][j]</code>，而不用多此一举去枚举<code>k</code>了，转移可以直接变成如下</p>
 <script type="math/tex; mode=display">
-dp[i][j]=max(dp[i-1][j],dp[i][j-c_i]+w[i])</script><pre class=" language-lang-cpp"><code class="language-lang-cpp">for (int i = 1; i <= n; i++) &#123;
-    for (int j = 0; j <= v; j++) &#123;
-        if (j >= c[i]) &#123;
-            dp[i][j] = max(dp[i][j - c[i]] + w[i], dp[i - 1][j]);
-        &#125; else &#123;
-            dp[i][j] = dp[i - 1][j];
-        &#125;
-    &#125;
-&#125;
-</code></pre>
+dp[i][j]=max(dp[i-1][j],dp[i][j-c_i]+w[i])</script><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= v; j++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (j &gt;= c[i]) &#123;</span><br><span class="line">            dp[i][j] = max(dp[i][j - c[i]] + w[i], dp[i - <span class="number">1</span>][j]);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            dp[i][j] = dp[i - <span class="number">1</span>][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="背包问题的空间优化"><a href="#背包问题的空间优化" class="headerlink" title="背包问题的空间优化"></a>背包问题的空间优化</h3><p>二维转一维</p>
 <p>以01背包为例：</p>
 <p>原来的滚动数组代码：</p>
-<pre class=" language-lang-cpp"><code class="language-lang-cpp">int flag = 1;
-for (int i = 1; i <= N; i++) &#123;
-    for (int j = 0; j <= V; j++) &#123;
-        if (j > c[i]) &#123;
-            dp[flag][j] = max(dp[1 - flag][j - c[i]] + w[i], dp[1 - flag][j]);    
-        &#125; else &#123;
-            dp[flag][j] = dp[1 - flag][j];
-        &#125;
-    &#125;
-    flag = 1 - flag;
-&#125;
-</code></pre>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> flag = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= N; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= V; j++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (j &gt; c[i]) &#123;</span><br><span class="line">            dp[flag][j] = max(dp[<span class="number">1</span> - flag][j - c[i]] + w[i], dp[<span class="number">1</span> - flag][j]);    </span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            dp[flag][j] = dp[<span class="number">1</span> - flag][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    flag = <span class="number">1</span> - flag;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>如果我们把 <code>dp</code> 数组只开成一维表示体积，然后从大到小枚举体积，也就是从 $V$到$0$枚举，则当前引用的 <code>dp[j]</code>和<code>dp[j-c[i]]</code>仍然是计算第<code>i-1</code>件物品的结果，即二维状态下的<code>dp[1-flag][j]</code>, <code>dp[1-flag][j-c[i]]</code>,因为我们之前没有更新过<code>dp[1-flag][j]</code>,<code>dp[1-flag][j-c[i]]</code>的值。</p>
 <p>故我们可以简化转移方程：</p>
 <script type="math/tex; mode=display">
-dp[j]=max(dp[j-c_i]+w_i,dp[j])</script><pre class=" language-lang-cpp"><code class="language-lang-cpp">for (int i = 1; i <= n; i++)&#123;
-    for (int j = v; j >= c[i]; j--) &#123;
-        dp[j] = max(dp[j - c[i]] + w[i], dp[j]);
-    &#125;
-&#125;
-</code></pre>
+dp[j]=max(dp[j-c_i]+w_i,dp[j])</script><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = v; j &gt;= c[i]; j--) &#123;</span><br><span class="line">        dp[j] = max(dp[j - c[i]] + w[i], dp[j]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>同理，多重背包：</p>
-<pre class=" language-lang-cpp"><code class="language-lang-cpp">for (int i = 1; i <= N; i++) &#123;
-    for (int j = V; j >= 0; j--) &#123;
-        for (int k = 1; k <= n[i]; k++) &#123;
-            if (j >= c[i] * k) &#123;
-                dp[j] = max(dp[j - c[i] * k] + w[i] * k, dp[j]);
-            &#125;
-        &#125;
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= N; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = V; j &gt;= <span class="number">0</span>; j--) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">1</span>; k &lt;= n[i]; k++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (j &gt;= c[i] * k) &#123;</span><br><span class="line">                dp[j] = max(dp[j - c[i] * k] + w[i] * k, dp[j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>完全背包：</p>
-<pre class=" language-lang-cpp"><code class="language-lang-cpp">for (int i = 1; i <= n; i++) &#123;
-    for (int j = c[i]; j <= v; j++) &#123;
-        dp[j] = max(dp[j - c[i]] + w[i], dp[j]);
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = c[i]; j &lt;= v; j++) &#123;</span><br><span class="line">        dp[j] = max(dp[j - c[i]] + w[i], dp[j]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>节省了一半空间。</p>
 <h3 id="扩展——分组背包问题"><a href="#扩展——分组背包问题" class="headerlink" title="扩展——分组背包问题"></a>扩展——分组背包问题</h3><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1757">洛谷P1757 通天之分组背包</a></p>
 <p>当前有$N$种物品，第$i$种物品的体积是$c_i$，价值是$w_i$。每种物品有且仅有一件。<strong>这些东西被分为$K$组，同组的物品不能同时放入背包。</strong>现有容量为$V$的背包，请你放入若干物品，使总体积不超过$V$，并且总价值尽可能大。</p>
@@ -396,17 +330,7 @@ dp[j]=max(dp[j-c_i]+w_i,dp[j])</script><pre class=" language-lang-cpp"><code cla
 <p>在考虑最优解时，对于每一组内的物品有两种选择策略，要么选择组中的某一个物品放入背包，要么包内的任何一个物品都不选入背包。考虑到该策略与 01 背包的相似性，我们可以将<strong>一组物品</strong>抽象成单独的物品。首先使用朴素的 01 背包写法，用 <code>dp[i][j]</code> 表示枚举到第 $i$ 组物品时，背包体积不超过 $j$ 的最大价值和。</p>
 <p>而与 01 背包不同的是，对于组内的每一个物品需要逐一枚举。</p>
 <p>核心代码：</p>
-<pre class=" language-lang-cpp"><code class="language-lang-cpp">for (int i = 1; i <= K; i++) &#123;
-    for (int j = 0; j <= V; j++) &#123;
-        dp[i][j] = dp[i - 1][j];
-        for (int k = 0; k < n[i]; k++) &#123;
-            if (j >= c[i][k]) &#123;
-                dp[i][j] = max(dp[i][j], dp[i - 1][j - c[i][k]] + w[i][k]);
-            &#125;
-        &#125;
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= K; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= V; j++) &#123;</span><br><span class="line">        dp[i][j] = dp[i - <span class="number">1</span>][j];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; n[i]; k++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (j &gt;= c[i][k]) &#123;</span><br><span class="line">                dp[i][j] = max(dp[i][j], dp[i - <span class="number">1</span>][j - c[i][k]] + w[i][k]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><div class="table-container">
 <table>
 <thead>
@@ -458,10 +382,7 @@ dp[j]=max(dp[j-c_i]+w_i,dp[j])</script><pre class=" language-lang-cpp"><code cla
     <a href="/2020/09/16/hello-world/" rel="prev" title="Hello World">
       <i class="fa fa-chevron-left"></i> Hello World
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/10/01/%E8%AF%97%E7%BB%8F%E6%A4%8D%E7%89%A9%E6%96%87%E8%A7%A3/" rel="next" title="诗经植物文解">
-      诗经植物文解 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -579,7 +500,7 @@ dp[j]=max(dp[j-c_i]+w_i,dp[j])</script><pre class=" language-lang-cpp"><code cla
   </span>
   <span class="author" itemprop="copyrightHolder">Zhao Jiayi</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
         
@@ -605,7 +526,7 @@ dp[j]=max(dp[j-c_i]+w_i,dp[j])</script><pre class=" language-lang-cpp"><code cla
 <script src="/js/motion.js"></script>
 
 
-<script src="/js/schemes/muse.js"></script>
+<script src="/js/schemes/pisces.js"></script>
 
 
 <script src="/js/next-boot.js"></script>
