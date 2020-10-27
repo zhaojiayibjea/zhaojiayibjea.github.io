@@ -2,14 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://zhaojiayibjea.github.io/2020/04/20/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/</loc>
+    <loc>http://zhaojiayibjea.github.io/2020/09/16/hello-world/</loc>
+    
+    <lastmod>2020-10-24</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://zhaojiayibjea.github.io/about/index.html</loc>
     
     <lastmod>2020-10-17</lastmod>
     
   </url>
   
   <url>
-    <loc>http://zhaojiayibjea.github.io/about/index.html</loc>
+    <loc>http://zhaojiayibjea.github.io/2020/04/20/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/</loc>
     
     <lastmod>2020-10-17</lastmod>
     
@@ -86,13 +93,6 @@
   </url>
   
   <url>
-    <loc>http://zhaojiayibjea.github.io/2020/09/16/hello-world/</loc>
-    
-    <lastmod>2020-09-26</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://zhaojiayibjea.github.io/friends/index.html</loc>
     
     <lastmod>2020-09-16</lastmod>
@@ -102,7 +102,7 @@
 
   <url>
     <loc>http://zhaojiayibjea.github.io/</loc>
-    <lastmod>2020-10-17</lastmod>
+    <lastmod>2020-10-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -110,42 +110,42 @@
   
   <url>
     <loc>http://zhaojiayibjea.github.io/tags/%E4%BF%A1%E6%81%AF%E5%AD%A6/</loc>
-    <lastmod>2020-10-17</lastmod>
+    <lastmod>2020-10-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://zhaojiayibjea.github.io/tags/%E8%AF%AD%E6%96%87/</loc>
-    <lastmod>2020-10-17</lastmod>
+    <lastmod>2020-10-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://zhaojiayibjea.github.io/tags/%E4%BD%9C%E6%96%87/</loc>
-    <lastmod>2020-10-17</lastmod>
+    <lastmod>2020-10-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://zhaojiayibjea.github.io/tags/%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2020-10-17</lastmod>
+    <lastmod>2020-10-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://zhaojiayibjea.github.io/tags/%E9%A1%B9%E7%9B%AE%E5%8C%96%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2020-10-17</lastmod>
+    <lastmod>2020-10-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://zhaojiayibjea.github.io/tags/%E6%96%B0%E5%86%A0/</loc>
-    <lastmod>2020-10-17</lastmod>
+    <lastmod>2020-10-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -154,21 +154,21 @@
   
   <url>
     <loc>http://zhaojiayibjea.github.io/categories/%E4%BF%A1%E6%81%AF%E5%AD%A6/</loc>
-    <lastmod>2020-10-17</lastmod>
+    <lastmod>2020-10-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://zhaojiayibjea.github.io/categories/%E8%AF%AD%E6%96%87/</loc>
-    <lastmod>2020-10-17</lastmod>
+    <lastmod>2020-10-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://zhaojiayibjea.github.io/categories/%E7%BB%BC%E5%90%88/</loc>
-    <lastmod>2020-10-17</lastmod>
+    <lastmod>2020-10-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
